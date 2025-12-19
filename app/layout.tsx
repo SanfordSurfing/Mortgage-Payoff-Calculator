@@ -38,6 +38,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Google Analytics 代码 - 紧跟在head元素之后 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-93XJE8SJ38"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-93XJE8SJ38');
+            `,
+          }}
+        />
         {/* 结构化数据，帮助搜索引擎理解页面内容 */}
         <script
           type="application/ld+json"

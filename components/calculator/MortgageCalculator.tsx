@@ -170,7 +170,7 @@ export default function MortgageCalculator() {
               className="w-full text-left p-6 border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50/50 transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2">
-                Calculator 2: If you don't know the remaining loan term
+                Calculator 2: If you don&apos;t know the remaining loan term
               </h3>
               <p className="text-sm text-gray-600">
                 Use this calculator if the term length of the remaining loan is not known. The unpaid principal balance, interest rate, and monthly payment values can be found in the monthly or quarterly mortgage statement.

@@ -243,11 +243,14 @@ function Calculator() {
 - `README.md` - 项目总体说明
 - `introduction.md` - 本文件，项目介绍文档
 - `prd.md` - 产品需求文档
+- `google code.md` - Google Analytics 统计代码（已集成到 layout.tsx 中）
 
 #### 核心应用文件
-- `app/layout.tsx` - 根布局组件，包含 SEO 元数据和全局样式
+- `app/layout.tsx` - 根布局组件，包含 SEO 元数据、Google Analytics 统计代码和全局样式
 - `app/page.tsx` - 首页组件，整合计算器和名词解释
 - `app/globals.css` - 全局样式文件
+- `app/sitemap.ts` - 自动生成 sitemap.xml 文件，帮助搜索引擎发现和索引网站页面
+- `app/robots.ts` - 自动生成 robots.txt 文件，告诉搜索引擎爬虫哪些页面可以访问
 
 #### 类型定义
 - `types/index.ts` - 所有 TypeScript 类型定义（房贷参数、计算结果等）
