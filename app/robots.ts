@@ -13,8 +13,8 @@ import { MetadataRoute } from 'next'
  * - Sitemap: 告诉搜索引擎 sitemap 的位置
  */
 export default function robots(): MetadataRoute.Robots {
-  // 基础URL - 如果部署后，请更新为实际域名
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com'
+  // 基础URL - 从环境变量读取，如果没有则使用默认域名
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mortgage-payoff-calculator.top'
 
   return {
     rules: [

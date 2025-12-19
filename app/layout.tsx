@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     description: "Calculate your mortgage payoff time and savings with our free calculator. Supports extra payments and multiple payment frequencies.",
     type: "website",
     locale: "en_US",
+    url: "https://mortgage-payoff-calculator.top",
+    siteName: "Mortgage Payoff Calculator",
   },
   twitter: {
     card: "summary_large_image",
@@ -35,6 +37,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // 获取网站 URL，用于结构化数据和 OpenGraph
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mortgage-payoff-calculator.top";
+  
   return (
     <html lang="en">
       <head>
@@ -58,6 +63,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebApplication",
               "name": "Mortgage Payoff Calculator",
+              "url": siteUrl,
               "description": "Free mortgage payoff calculator to calculate how much time and money you can save by making extra payments. Supports monthly and bi-weekly payments.",
               "applicationCategory": "FinanceApplication",
               "operatingSystem": "Web",
