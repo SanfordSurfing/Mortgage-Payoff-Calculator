@@ -273,6 +273,10 @@ export function calculateMortgage(params: MortgageParams): CalculationResult {
   } else {
     // 计算器2：使用用户输入的月供，使用计算出的期数
     originalNumberOfPayments = numberOfPayments;
+    // 在计算器2中，monthlyPayment 一定已经被设置（第247行）
+    if (monthlyPayment === undefined) {
+      throw new Error('Monthly payment is required for calculator type 2');
+    }
     originalMonthlyPayment = monthlyPayment; // 直接使用用户输入的月供
   }
   
