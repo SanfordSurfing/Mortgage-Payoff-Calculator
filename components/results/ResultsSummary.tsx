@@ -46,8 +46,67 @@ export default function ResultsSummary({ result }: ResultsSummaryProps) {
   const basePayment = newPlan.monthlyPayment;
   const extraPaymentAmount = newPlan.schedule.length > 0 ? newPlan.schedule[0].extraPayment : 0;
 
+  // 生成 SEO 友好的动态文本
+  const generateSEOText = () => {
+    if (hasExtraPayments && extraPaymentDetails) {
+      // 构建额外还款描述
+      const extraPaymentParts: string[] = [];
+      if (extraPaymentDetails.perMonth) {
+        extraPaymentParts.push(`an extra payment of ${formatCurrency(extraPaymentDetails.perMonth)} per month`);
+      }
+      if (extraPaymentDetails.perYear) {
+        extraPaymentParts.push(`an extra payment of ${formatCurrency(extraPaymentDetails.perYear)} per year`);
+      }
+      if (extraPaymentDetails.oneTime) {
+        extraPaymentParts.push(`a one-time extra payment of ${formatCurrency(extraPaymentDetails.oneTime)}`);
+      }
+      
+      // 根据额外还款类型生成不同的描述
+      let extraPaymentText = '';
+      if (extraPaymentParts.length === 1) {
+        extraPaymentText = extraPaymentParts[0];
+      } else if (extraPaymentParts.length === 2) {
+        extraPaymentText = `${extraPaymentParts[0]} and ${extraPaymentParts[1]}`;
+      } else {
+        extraPaymentText = extraPaymentParts.slice(0, -1).join(', ') + `, and ${extraPaymentParts[extraPaymentParts.length - 1]}`;
+      }
+
+      // 计算节省的时间描述
+      const originalTimeText = formatTime(original.totalPeriods);
+      const newTimeText = formatTime(newPlan.totalPeriods);
+
+      return {
+        heading: 'Mortgage Payoff Results',
+        description: `By making ${extraPaymentText}, you can pay off your mortgage in ${newTimeText} instead of ${originalTimeText}, saving approximately ${formatCurrency(savings.interestSaved)} in interest (${savings.interestSavedPercent.toFixed(1)}% reduction).`
+      };
+    } else {
+      // 正常还款情况
+      const originalTimeText = formatTime(original.totalPeriods);
+      return {
+        heading: 'Mortgage Payoff Results',
+        description: `With a monthly payment of ${formatCurrency(original.monthlyPayment)}, you will pay off your mortgage in ${originalTimeText}, with a total interest of ${formatCurrency(original.totalInterest)}.`
+      };
+    }
+  };
+
+  const seoContent = generateSEOText();
+
   return (
     <div className="space-y-6">
+      {/* SEO 友好的结果摘要文本 */}
+      <section className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100 shadow-sm">
+        <h2 className="text-2xl font-bold text-gray-900 mb-3">{seoContent.heading}</h2>
+        <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+          {seoContent.description.split(/(\$\d+[,\d]*\.?\d*|\d+\s+(?:year|years|month|months)(?:\s+\d+\s+(?:year|years|month|months))?)/gi).map((part, index) => {
+            // 如果是货币格式或时间格式，加粗显示
+            if (part.match(/^\$\d+[,\d]*\.?\d*$/) || part.match(/^\d+\s+(?:year|years|month|months)/i)) {
+              return <strong key={index} className="text-gray-900 font-semibold">{part}</strong>;
+            }
+            return <span key={index}>{part}</span>;
+          })}
+        </p>
+      </section>
+
       {/* 本计划的 Repayment Options */}
       <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
         <h3 className="text-xl font-semibold text-gray-900 mb-4">Your Repayment Plan</h3>

@@ -290,10 +290,13 @@ function Calculator() {
 - `ExportButtons.tsx` - 导出按钮组件
   - 提供 PDF、Excel、图片三种导出方式
 
-**名词解释组件** (`components/glossary/`)
-- `Glossary.tsx` - 名词解释组件
-  - 图文并茂地解释房贷相关术语
-  - 包含 8 个核心术语的解释
+**概念解释组件** (`components/glossary/`)
+- `Glossary.tsx` - 概念解释组件
+  - 围绕"how to pay off a mortgage faster"主题，帮助用户理解计算器结果
+  - 每个概念150-300字的详细解释，而非简单的词典式定义
+  - 包含 7 个核心概念：Principal（本金）、Interest（利息）、Amortization Schedule（摊销表）、Extra Payments Strategy（额外还款策略）、Total Interest Paid（总利息）、Payoff Time（还款期限）、Monthly Payment Breakdown（月供分解）
+  - 优化SEO，使用语义化HTML标签（section、article、header、footer）和结构化内容
+  - 每个概念都解释如何理解计算器结果中的相关数据，帮助用户做出更明智的还款决策
 
 ---
 

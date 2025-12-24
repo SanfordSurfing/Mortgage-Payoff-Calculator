@@ -73,11 +73,14 @@ export function generatePaymentSchedule(
     const date = new Date(currentDate);
     date.setMonth(date.getMonth() + period - 1);
 
+    // 实际还款金额 = 利息 + 本金还款（当余额不足时，实际还款会小于月供）
+    const actualPayment = interest + principalPayment;
+    
     schedule.push({
       period,
       date,
       beginningBalance: balance + principalPayment,
-      payment: paymentAmount,
+      payment: actualPayment,
       principal: principalPayment,
       interest,
       extraPayment: 0,
@@ -151,6 +154,10 @@ export function generateScheduleWithExtraPayments(
       balance = 0;
     }
     
+    // 实际还款金额 = 利息 + 本金还款（包括额外还款）
+    // 当余额不足时，实际还款会小于 basePayment + extraPaymentAmount
+    const actualPayment = interest + principalPayment;
+    
     // 计算日期（月付）
     const date = new Date(currentDate);
     date.setMonth(date.getMonth() + period - 1);
@@ -159,7 +166,7 @@ export function generateScheduleWithExtraPayments(
       period,
       date,
       beginningBalance,
-      payment: basePayment + extraPaymentAmount,
+      payment: actualPayment,
       principal: principalPayment,
       interest,
       extraPayment: extraPaymentAmount,
