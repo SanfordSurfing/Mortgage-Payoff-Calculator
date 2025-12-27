@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Mortgage Payoff Calculator - Calculate Your Loan Savings | Free Tool",
-  description: "Free mortgage payoff calculator to calculate how much time and money you can save by making extra payments. Supports monthly and bi-weekly payments. Export results as PDF, Excel, or image. No registration required.",
-  keywords: "mortgage calculator, payoff calculator, loan calculator, extra payment calculator, amortization calculator, mortgage savings, bi-weekly mortgage, mortgage payoff time, interest savings calculator",
+  title: "Mortgage Payoff Calculator - Faster Morgage Payoff Calculations | Free Tool",
+  description: "Free mortgage payoff calculator to calculate options to pay off a mortgage faster. Supports monthly and extra payments. Export results as PDF, Excel, or image. No registration required.",
+  keywords: "mortgage calculator, payoff calculator, loan calculator, extra payment calculator, amortization calculator, mortgage savings, pay off a mortgage faster, mortgage payoff time, interest savings calculator",
   authors: [{ name: "Mortgage Calculator" }],
   openGraph: {
     title: "Mortgage Payoff Calculator - Free Tool",
@@ -64,7 +64,7 @@ export default function RootLayout({
               "@type": "WebApplication",
               "name": "Mortgage Payoff Calculator",
               "url": siteUrl,
-              "description": "Free mortgage payoff calculator to calculate how much time and money you can save by making extra payments. Supports monthly and bi-weekly payments.",
+              "description": "Free mortgage payoff calculator to calculate how much time and money you can save by making extra payments. Supports monthly payments.",
               "applicationCategory": "FinanceApplication",
               "operatingSystem": "Web",
               "offers": {
@@ -76,7 +76,7 @@ export default function RootLayout({
                 "Calculate mortgage payoff time",
                 "Calculate interest savings",
                 "Support for extra payments",
-                "Monthly and bi-weekly payment options",
+                "Monthly payment options",
                 "Export results as PDF, Excel, or image",
                 "Amortization schedule",
                 "Visual charts and graphs",
